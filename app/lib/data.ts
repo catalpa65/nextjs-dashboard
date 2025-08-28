@@ -16,7 +16,7 @@ export async function fetchRevenue() {
         const data = await sql<Revenue[]>`SELECT *
                                           FROM revenue`;
 
-        // console.log('Data fetch completed after 3 seconds.');
+        console.log('Data fetch completed after 3 seconds.');
 
         return data;
     } catch (error) {
@@ -59,8 +59,9 @@ export async function fetchCardData() {
                                                 SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) AS "pending"
                                          FROM invoices`;
 
-        /*默认SQL是一个一个执行的，叫瀑布模式。
-        也可以用并行模式，更快一点：Promise.all() or Promise.allSettled()*/
+        /*
+        * 这里使用Promise.all() or Promise.allSettled()进行并行处理，解决请求瀑布问题
+        * */
         const data = await Promise.all([
             invoiceCountPromise,
             customerCountPromise,

@@ -1,10 +1,10 @@
-import type { NextConfig } from 'next';
+import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
-    /*experimental: {
+    /* 部分预渲染配置 */
+    experimental: {
         ppr: 'incremental'
-    }*/
+    }
 };
 
 export default nextConfig;

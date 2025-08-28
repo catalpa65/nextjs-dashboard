@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 export default function InvoiceStatus({status}: { status: string }) {
     return (
-        /*这里使用了clsx包，有条件的设置样式*/
+        /*这里使用了clsx包，可以有条件的设置样式*/
         <span
             className={clsx(
                 'inline-flex items-center rounded-full px-2 py-1 text-xs',
