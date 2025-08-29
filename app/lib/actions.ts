@@ -3,8 +3,8 @@ import {z} from 'zod';
 import {revalidatePath} from 'next/cache';
 import {redirect} from 'next/navigation';
 import postgres from 'postgres';
-import { signIn } from '@/auth';
-import { AuthError } from 'next-auth';
+import {signIn} from '@/auth';
+import {AuthError} from 'next-auth';
 
 //新增
 const sql = postgres(process.env.POSTGRES_URL!, {ssl: 'require'});
@@ -66,8 +66,9 @@ export async function createInvoice(prevState: State, formData: FormData) {
         };
     }
 
-    // Revalidate the cache for the invoices page and redirect the user.
+    //重新验证路由缓存
     revalidatePath('/dashboard/invoices');
+    //跳转到列表页
     redirect('/dashboard/invoices');
 }
 
